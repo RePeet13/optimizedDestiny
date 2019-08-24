@@ -3,7 +3,25 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  bungieAuthEndpoint: 'https://www.bungie.net/en/OAuth/Authorize',
+  bungieTokenEndpoint: 'https://www.bungie.net/platform/app/oauth/token/',
+  bungieApiKey: '0ad5a8858b0b4d808674c358251ed905',
+  bungieAuthQueryObj: {
+    'response_type': 'code',
+    'client_id': '2521',
+    'state': ''
+  },
+  bungieTokenHeaderObj: {
+    'Authorization': 'Basic ',
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  bungieTokenNewHeaderObj:{
+    'grant_type': 'authorization_code&code='
+  },
+  bungieTokenRefreshHeaderObj:{
+    'grant_type': 'refresh_token&code='
+  },
 };
 
 /*

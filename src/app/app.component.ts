@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BungieAuthService } from './bungie-auth/bungie-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(
+    private bungieAuthService: BungieAuthService,
+  ){}
+  
   title = 'sparrow-sidecar';
+
+  bungieAuthenticate() {
+    this.bungieAuthService.authenticate();
+  }
 }

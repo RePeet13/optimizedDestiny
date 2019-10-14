@@ -2,7 +2,11 @@
 # - https://mherman.org/blog/dockerizing-an-angular-app/
 ###
 # Dev  - docker build -t sparrow-sidecar:dev .
+#
+#    Run this from root of project (inside which is node_modules
 #        docker run -v ${PWD}:/app -v /app/node_modules -p 4201:4200 --rm sparrow-sidecar:dev
+#    For IronMan dev
+#        docker run -v /media/data2/git/sparrow-sidecar:/app -v /app/node_modules -p 4201:4200 --rm sparrow-sidecar:dev
 ###
 # base image
 FROM node:12.2.0
@@ -19,13 +23,19 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
-COPY package.json /app/package.json
+COPY package*.json /app/
 RUN npm install
 RUN npm install -g @angular/cli@7.3.9
-RUN npm install -g angular-oauth2-oidc
+
+#RUN npm install -g rxjs
+#RUN npm install -g zone.js
+#RUN npm install -g @angular/core@8.2.3
+#RUN npm install -g @angular/common@8.2.3
+#RUN npm install -g angular-oauth2-oidc
 
 # add app
 COPY . /app
 
 # start app
-CMD ng serve --host 0.0.0.0 --disable-host-check
+#CMD ng serve --host 0.0.0.0 --disable-host-check
+CMD node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check

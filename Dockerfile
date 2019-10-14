@@ -27,12 +27,6 @@ COPY package*.json /app/
 RUN npm install
 RUN npm install -g @angular/cli@7.3.9
 
-#RUN npm install -g rxjs
-#RUN npm install -g zone.js
-#RUN npm install -g @angular/core@8.2.3
-#RUN npm install -g @angular/common@8.2.3
-#RUN npm install -g angular-oauth2-oidc
-
 # add app
 COPY . /app
 

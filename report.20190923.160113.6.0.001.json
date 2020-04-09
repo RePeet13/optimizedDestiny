@@ -1,0 +1,258 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20190923.160113.6.0.001.json",
+    "dumpEventTime": "2019-09-23T16:01:13Z",
+    "dumpEventTimeStamp": "1569254473999",
+    "processId": 6,
+    "cwd": "/app",
+    "commandLine": [
+      "node",
+      "/app/node_modules/.bin/ng",
+      "serve",
+      "--host",
+      "0.0.0.0",
+      "--disable-host-check"
+    ],
+    "nodejsVersion": "v12.2.0",
+    "glibcVersionRuntime": "2.24",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.2.0",
+      "v8": "7.4.288.21-node.17",
+      "uv": "1.28.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.38.0",
+      "napi": "4",
+      "llhttp": "1.1.3",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.2.0/node-v12.2.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.2.0/node-v12.2.0.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-54-generic",
+    "osVersion": "#58-Ubuntu SMP Mon Jun 24 10:55:24 UTC 2019",
+    "osMachine": "x86_64",
+    "host": "87d28376523d"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000aa94ed",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x000000000098d653",
+      "symbol": "node::OnFatalError(char const*, char const*) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000b077ce",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000b07b49",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000f12c05",
+      "symbol": " [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000f1d56b",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000f1e287",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000f20d25",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000000eebd50",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationSpace) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x00000000011bdb5e",
+      "symbol": "v8::internal::Runtime_AllocateInNewSpace(int, unsigned long*, v8::internal::Isolate*) [ng serve --host 0.0.0.0 --disable-host-check]"
+    },
+    {
+      "pc": "0x0000000001a86142",
+      "symbol": " [ng serve --host 0.0.0.0 --disable-host-check]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2153779200,
+    "totalCommittedMemory": 2149166160,
+    "usedMemory": 2140521656,
+    "availableMemory": 50102984,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 32024,
+        "capacity": 523976,
+        "used": 31712,
+        "available": 492264
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 1359424,
+        "capacity": 2095904,
+        "used": 308992,
+        "available": 1786912
+      },
+      "old_space": {
+        "memorySize": 1945231360,
+        "committedMemory": 1944535088,
+        "capacity": 1942373816,
+        "used": 1940682008,
+        "available": 1691808
+      },
+      "code_space": {
+        "memorySize": 1736704,
+        "committedMemory": 1429216,
+        "capacity": 1337984,
+        "used": 1337984,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 6295552,
+        "committedMemory": 6013416,
+        "capacity": 2495280,
+        "used": 2495280,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 195174400,
+        "committedMemory": 195174400,
+        "capacity": 195115024,
+        "used": 195115024,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550656,
+        "used": 550656,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 2095904,
+        "used": 0,
+        "available": 2095904
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 116.71,
+    "kernelCpuSeconds": 2.50001,
+    "cpuConsumptionPercent": 243.285,
+    "maxRss": 2335133696,
+    "pageFaults": {
+      "IORequired": 0,
+      "IONotRequired": 770480
+    },
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 46.844,
+    "kernelCpuSeconds": 1.18339,
+    "cpuConsumptionPercent": 98.0152,
+    "fsActivity": {
+      "reads": 0,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "NODE_VERSION": "12.2.0",
+    "HOSTNAME": "87d28376523d",
+    "YARN_VERSION": "1.15.2",
+    "HOME": "/root",
+    "PATH": "/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "PWD": "/app",
+    "WEBPACK_DEV_SERVER": "true"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/lib/x86_64-linux-gnu/librt.so.1",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2"
+  ]
+}

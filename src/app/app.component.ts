@@ -14,6 +14,12 @@ export class AppComponent {
   title = 'sparrow-sidecar';
 
   bungieAuthenticate() {
-    this.bungieAuthService.authenticate();
+    // if (! this.bungieAuthService.isLoggedIn() ) {
+      this.bungieAuthService.login()
+    // }
+  }
+
+  isLoggedIn() {
+    return this.bungieAuthService.isLoggedIn();
   }
 }

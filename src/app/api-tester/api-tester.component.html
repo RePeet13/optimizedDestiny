@@ -1,0 +1,40 @@
+<div class="left">
+    <div>Items of Note</div>
+    <ul>
+        <li *ngFor="let item of items">
+            {{ item[0] }} | {{ item[1] }}
+        </li>
+    </ul>
+    <input #charId (keyup.enter)="callRecordsApi(charId.value)" style="width:80%">
+    <button (click)="callRecordsApi(charId.value)">Call Triumphs</button>
+    
+    <br /><br /><br />
+
+    <input #pathInput (keyup.enter)="callApi(pathInput.value)" style="width:80%">
+    <button (click)="callApi(pathInput.value)">Call API</button>
+
+    <div>Last Urls Called</div>
+    <ul>
+        <li *ngFor="let item of urlsCalled">
+            {{ item }}
+        </li>
+    </ul>
+</div>
+<div class="right">
+    <div>List of Triumphs</div>
+    <ul>
+        <li *ngFor="let item of triumphs">{{ item.parentNodeNames }} -> {{ item.name }} | {{ item.stateName }} | {{ item.description }}
+            <!-- <ul *ngFor="let subItem of {{ item }}">
+                <li>{{ subItem.name }}</li>
+            </ul> -->
+        </li>
+    </ul>
+
+    <div>Raw Response</div>
+    <ul>
+        <li *ngFor="let item of returnItems">
+            {{ item }}
+        </li>
+    </ul>
+    <pre>{{response | json}}</pre>
+</div>

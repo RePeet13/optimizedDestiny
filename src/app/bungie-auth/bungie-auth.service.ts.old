@@ -1,0 +1,45 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { DOCUMENT } from '@angular/common';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class BungieAuthService {
+  private bungieApiKey = '0ad5a8858b0b4d808674c358251ed905';
+  private ApiCredentials = {
+    key : "0ad5a8858b0b4d808674c358251ed905",
+    clientId : "2521",
+    clientSecret : "",
+    authCode : "",
+    jokes:""
+  };
+  private Api;
+  private authCodeKey = "ss-bungie-auth-code"
+
+  constructor() {
+    const BungieLib = require( 'bungie-net-api' );
+    this.Api = new BungieLib( this.ApiCredentials, [ 'destiny2' ] );
+  }
+ 
+  isLoggedIn() {
+    if (!this.ApiCredentials.authCode && !localStorage.getItem(this.authCodeKey)){
+      // Redirect to bungie api
+      return false;
+    }
+    return true;
+  }
+
+  login() {
+    window.open(this.Api.authUri, "_blank");
+  }
+ 
+  logout() {
+  }
+}

@@ -1,0 +1,9 @@
+div.left {
+    float: left;
+    width: 33%;
+    word-wrap: break-word;
+}
+div.right {
+    float: left;
+    width: 66%;
+}

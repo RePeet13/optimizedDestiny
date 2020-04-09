@@ -1,0 +1,64 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { OAuthService } from 'angular-oauth2-oidc';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class BungieAuthService {
+  bungieApiKey = '0ad5a8858b0b4d808674c358251ed905';
+  constructor(
+    private _router: Router, private _http: HttpClient, private oauthService: OAuthService){
+        this.oauthService.configure({
+            loginUrl : 'https://www.bungie.net/en/OAuth/Authorize',
+            redirectUri : 'https://sparrow-sidecar.club/',
+            clientId : '2521',
+            responseType : 'code',
+            showDebugInformation : true,
+            scope : ''
+        });
+        //this.oauthService.scope = "read write";    
+        this.oauthService.setStorage(sessionStorage);
+        this.oauthService.tryLogin({
+          onTokenReceived: context => {
+            //
+            // Output just for purpose of demonstration
+            // Don't try this at home ... ;-)
+            //
+            console.debug("logged in");
+            console.debug(context);
+          }
+        });
+    }
+  
+  obtainAccessToken(){
+      this.oauthService.initImplicitFlow();
+  }
+
+  getResource(resourceUrl) : Observable<any>{
+    var headers = new HttpHeaders({
+        'Content-type' : 'application/x-www-form-urlencoded; charset=utf-8',
+        'Authorization': 'Bearer ' + this.oauthService.getAccessToken()
+    });
+    return this._http.get(resourceUrl, { headers : headers })
+      .pipe(map((res:Response) => res.json()))
+      .pipe(catchError((error:any) => Observable.throw(error.json().error || 'Server error')));
+  }
+ 
+  isLoggedIn(){
+    if (this.oauthService.getAccessToken() === null){
+       return false;
+    }
+    return true;
+  } 
+ 
+  logout() {
+      this.oauthService.logOut();
+      location.reload();
+  }
+}
